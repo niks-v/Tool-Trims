@@ -20,23 +20,24 @@ public final class Tool_Trims extends JavaPlugin {
         File file = new File(getServer().getWorldContainer().toPath().resolve("world"+File.separator+"datapacks").toString(), "Tool-Trims-DP(plugin).zip");
         if(!file.exists()){
 
-            InputStream in = getResource("Tool-Trims-DP(plugin).zip");
-            if(in == null){
-                getLogger().severe("Missing resource: Datapack");
-                getServer().getPluginManager().disablePlugin(this);
-                return;
-            }
+            // InputStream in = getResource("Tool-Trims-DP(plugin).zip");
+            // if(in == null){
+            //     getLogger().severe("Missing resource: Datapack");
+            //     getServer().getPluginManager().disablePlugin(this);
+            //     return;
+            // }
 
-            try {
-                getLogger().info("Installing datapack...");
-                Files.copy(in, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
-                justInstalledDataPack = true;
-            } catch (IOException e) {
-                getLogger().severe("Unable to install datapack. Please manually install (grab from plugin folder)");
-                saveResource("Tool-Trims-DP(plugin).zip", true);
-            }
+            // try {
+            //     getLogger().info("Installing datapack...");
+            //     Files.copy(in, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+            //     justInstalledDataPack = true;
+            // } catch (IOException e) {
+            //     getLogger().severe("Unable to install datapack. Please manually install (grab from plugin folder)");
+            //     saveResource("Tool-Trims-DP(plugin).zip", true);
+            // }
+            getLogger().info("Datapack not found. Please manually install (grab from plugin folder)");
         } else {
-            getLogger().info("Datapack found. skipping installation");
+            getLogger().info("Datapack found.");
         }
     }
 
@@ -74,9 +75,9 @@ public final class Tool_Trims extends JavaPlugin {
             }
         }
 
-        for (ToolTrimSmithingTemplate trim: ToolTrimSmithingTemplate.values()) {
-            Bukkit.addRecipe(trim.dupeRecipe);
-        }
+        // for (ToolTrimSmithingTemplate trim: ToolTrimSmithingTemplate.values()) {
+        //     Bukkit.addRecipe(trim.dupeRecipe);
+        // }
 
         getServer().getPluginManager().registerEvents(new Events(), this);
     }
